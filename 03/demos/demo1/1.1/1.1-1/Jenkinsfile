@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    environment {
+        VERSION = "0.1.0"        
+        VERSION_RC = "rc.2"
+    }
+    stages {
+        stage('Audit tools') {                        
+            steps {
+                sh '''
+                  pwd
+                  git version
+                '''
+            }
+        }
+        stage('Build') {
+            steps {
+              echo "Building version: ${VERSION} with suffix: ${VERSION_RC}"
+            }
+        }
+        stage('Test1') {
+            steps {
+              dir('/03') {
+                sh '''
+                    touch new_file
+                '''
+              }
+            }
+        }
+    }
+}
