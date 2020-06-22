@@ -8,8 +8,8 @@ pipeline {
         stage('Audit tools') {                        
             steps {
                 sh '''
-                  git version
                   pwd
+                  git version
                   docker version
                   dotnet --list-sdks
                   dotnet --list-runtimes
